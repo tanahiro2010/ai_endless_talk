@@ -61,12 +61,23 @@ loop do
   answer = data.dig('choices', 0, 'message')
   content = answer['content']
 
-  # Discord に投稿
-  RestClient.post(
-    ENDPOINT_URL,
-    { content: content, username: "#{no} => #{model_id}" }.to_json,
-    { content_type: :json, accept: :json }
-  )
+  # Discord へ送信（2000文字制限対策）
+  if content.length > 1900
+    content.scan(/.{1,1900}/m).each_with_index do |chunk, idx|
+      RestClient.post(
+        ENDPOINT_URL,
+        { content: "[Part #{idx + 1}]\n" + chunk, username: "#{no} => #{model_id}" }.to_json,
+        { content_type: :json, accept: :json }
+      )
+    end
+  else
+    RestClient.post(
+      ENDPOINT_URL,
+      { content: content, username: "#{no} => #{model_id}" }.to_json,
+      { content_type: :json, accept: :json }
+    )
+  end
+
 
   # ログを追加
   logs << { role: 'assistant', content: content }
