@@ -3,7 +3,7 @@ require 'rest-client'
 require 'json'
 
 BASE_URL = 'https://capi.voids.top/v2/chat/completions'
-ENDPOINT_URL = 'https://discord.com/api/webhooks/1409834638339211284/SO8t-7ZTHeu5LAZATkAFwpo-Q5W3WqsUhNqTFufagEtHRNac6_3wU-bzROZCADJb9H6I?thread_id=1409834526364008509'
+ENDPOINT_URL = 'https://discord.com/api/webhooks/1409834638339211284/SO8t-7ZTHeu5LAZATkAFwpo-Q5W3WqsUhNqTFufagEtHRNac6_3wU-bzROZCADJb9H6I?thread_id=1409840023246737532'
 API_KEY = 'no_api_key_needed'
 MODELS = %w[gpt-4o-2024-08-06 qwen-turbo-latest].freeze
 
