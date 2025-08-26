@@ -88,4 +88,6 @@ loop do
   puts content_log
 
   no += 1
+
+  sleep 2
 end
